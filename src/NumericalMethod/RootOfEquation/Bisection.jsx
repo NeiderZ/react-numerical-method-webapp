@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {evaluate} from 'mathjs'
-import './Method.css'
+import '../Method.css'
 import Plot from 'react-plotly.js'
 
 function Bisection(){
@@ -14,7 +14,7 @@ function Bisection(){
     function calculate(){
 
         if(!fxIn || !xlIn || !xrIn || !errorLimitIn){
-            alert("Wrong input");
+            alert("Wrong Input");
             return;
         }
 
