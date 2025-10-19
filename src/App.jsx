@@ -6,6 +6,7 @@ import RootOfEquation from './RootOfEquation'
 import LinearAlgebra from './LinearAlgebra'
 import Interpolation from './Interpolation'
 import Extrapolation from './Extrapolation'
+import Integration from './Integration'
 
 function App() {
   const [activeMenu, setActiveMenu] = useState(null)
@@ -20,6 +21,8 @@ function App() {
         return(<Interpolation/>)
       case 'Extrapolation':
         return(<Extrapolation/>)
+      case 'Integration' :
+        return(<Integration/>)
     }
   }
 
@@ -38,6 +41,7 @@ function App() {
       <button onClick={() => setActiveMenu('LinearAlgebraEquation')}>Linear Algebra Equation</button> &nbsp;&nbsp;&nbsp;&nbsp;
       <button onClick={() => setActiveMenu('Interpolation')}>Interpolation Method</button> &nbsp;&nbsp;&nbsp;&nbsp;
       <button onClick={() => setActiveMenu('Extrapolation')}>Extrapolation Method</button> &nbsp;&nbsp;&nbsp;&nbsp;
+      <button onClick={() => setActiveMenu('Integration')}>Integration Method</button> &nbsp;&nbsp;&nbsp;&nbsp;
       <div className="card">
         {renderContent()}
       </div>
