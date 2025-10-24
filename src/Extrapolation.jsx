@@ -1,30 +1,15 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import './NumericalMethod/Method.css';
+import { useNavigate, useParams } from "react-router-dom";
 
 function Extrapolation(){
-    const[method,setMethod] = useState("graphical")
-
-    const handleMethodChange = (e) => {
-        setMethod(e.target.value)
-    }
-
-    const renderMethod = () =>{
-        switch(method){
-            case "SRE" :
-                return(<SimpleRegression/>)
-            case 'MRE':
-                return (<MultipleRegression/>)
-        }
-    }
+    const navigate = useNavigate()
+    const {methodParam} = useParams()
+    const[method,setMethod] = useState(methodParam)
 
     return(
         <div>
-            <select className='custom-select' value={method} onChange={handleMethodChange}>
-              <option value="SRE">Simple Regression Extraoilation</option>
-              <option value="MRE">Multiple Regression Extraoilation</option>
-            </select>
             <div style={{padding: '2em'}}>
-              {/*{renderMethod()}*/}
               <h2>ยังไม่เสร็จ 😭</h2>
             </div>
         </div>

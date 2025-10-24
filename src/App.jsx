@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,24 +6,9 @@ import LinearAlgebra from './LinearAlgebra'
 import Interpolation from './Interpolation'
 import Extrapolation from './Extrapolation'
 import Integration from './Integration'
+import { Link, Routes, Route } from 'react-router-dom'
 
 function App() {
-  const [activeMenu, setActiveMenu] = useState(null)
-
-  const renderContent = () =>{
-    switch(activeMenu){
-      case 'RootOfEquation':
-        return(<RootOfEquation/>)
-      case 'LinearAlgebraEquation':
-        return(<LinearAlgebra/>)
-      case 'Interpolation':
-        return(<Interpolation/>)
-      case 'Extrapolation':
-        return(<Extrapolation/>)
-      case 'Integration' :
-        return(<Integration/>)
-    }
-  }
 
   return (
     <>
@@ -37,13 +21,19 @@ function App() {
         </a>
       </div>
       <h1>Numerical Method</h1>
-      <button onClick={() => setActiveMenu('RootOfEquation')}>Root of Equation</button> &nbsp;&nbsp;&nbsp;&nbsp;
-      <button onClick={() => setActiveMenu('LinearAlgebraEquation')}>Linear Algebra Equation</button> &nbsp;&nbsp;&nbsp;&nbsp;
-      <button onClick={() => setActiveMenu('Interpolation')}>Interpolation Method</button> &nbsp;&nbsp;&nbsp;&nbsp;
-      <button onClick={() => setActiveMenu('Extrapolation')}>Extrapolation Method</button> &nbsp;&nbsp;&nbsp;&nbsp;
-      <button onClick={() => setActiveMenu('Integration')}>Integration Method</button> &nbsp;&nbsp;&nbsp;&nbsp;
+      <Link to="/RootOfEquation"><button style={{ backgroundColor: '#007bff', color: 'white' }}>Root of Equation</button></Link> &nbsp;&nbsp;&nbsp;&nbsp;
+      <Link to="/LinearAlgebraEquation"><button style={{ backgroundColor: '#007bff', color: 'white' }}>Linear Algebra Equation</button></Link> &nbsp;&nbsp;&nbsp;&nbsp;
+      <Link to="/Interpolation"><button style={{ backgroundColor: '#007bff', color: 'white' }}>Interpolation Method</button></Link> &nbsp;&nbsp;&nbsp;&nbsp;
+      <Link to="/Extrapolation"><button style={{ backgroundColor: '#007bff', color: 'white' }}>Extrapolation Method</button></Link> &nbsp;&nbsp;&nbsp;&nbsp;
+      <Link to="/Integration"><button style={{ backgroundColor: '#007bff', color: 'white' }}>Integration Method</button></Link> &nbsp;&nbsp;&nbsp;&nbsp;
       <div className="card">
-        {renderContent()}
+        <Routes>
+          <Route path="/RootOfEquation/:methodParam?" element={<RootOfEquation />} />
+          <Route path="/LinearAlgebraEquation/:methodParam?" element={<LinearAlgebra />} />
+          <Route path="/Interpolation/:methodParam?" element={<Interpolation />} />
+          <Route path="/Extrapolation/:methodParam?" element={<Extrapolation />} />
+          <Route path="/Integration/:methodParam?" element={<Integration />} />
+        </Routes>
       </div>
     </>
   )
