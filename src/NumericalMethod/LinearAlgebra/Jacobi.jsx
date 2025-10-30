@@ -120,7 +120,7 @@ function Jacobi() {
                 <input key={i} value={xStart[i]} onChange={(e) => defineXStart(i, Number(e.target.value))} style={{width: "40px", marginRight: "5px", marginBottom: "5px"}}></input>
             ))}
             <br /><br />
-            <button onClick={cal}>Calculate</button>
+            <button onClick={cal} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <br /><br />
             <h2>Result</h2>
             <table border="1" cellPadding="8" style={{borderCollapse: "collapse"}}>

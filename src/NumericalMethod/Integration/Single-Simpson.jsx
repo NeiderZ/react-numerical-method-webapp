@@ -62,7 +62,7 @@ function SingleSimpson(){
             <input placeholder="b" value={bIn} onChange={(e) => setBIn(e.target.value)}></input> &nbsp;&nbsp;&nbsp;&nbsp;
             <br/>
             <br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <h2>result = {result}</h2>
             <h2>Error = {error}%</h2>
             <br/>

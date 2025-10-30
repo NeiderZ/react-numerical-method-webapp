@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import {evaluate} from 'mathjs'
 import '../Method.css'
 import Plot from 'react-plotly.js'
+import axios from 'axios'
 
 function Bisection(){
     const [fxIn, setFxIn] = useState("");
@@ -10,6 +11,15 @@ function Bisection(){
     const [errorLimitIn, setErrorLimit] = useState("");
     const [result, setResult] = useState("");
     const [data, setData] = useState([]);
+    const [bisectionData, setBisectionData] = useState([])
+
+    const getdata = async () => {
+        try{
+            const res = await axios.get('http://localhost:8000/bisection')
+            console.log(res.data)
+            setBisectionData(res.data)
+        }catch(err){console.error(err)}
+    }
 
     function calculate(){
 
@@ -65,7 +75,16 @@ function Bisection(){
             <input placeholder="xr" value={xrIn} onChange={(e) => setXrIn(e.target.value)}/> &nbsp;&nbsp;&nbsp;&nbsp;
             <input placeholder="Error" value={errorLimitIn} onChange={(e) => setErrorLimit(e.target.value)}/>
             <br/><br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
+            <br/><br/>
+            <button onClick={getdata} style={{ backgroundColor: '#007bff', color: 'white' }}>Get Data</button>
+            <br/><br/>
+            {bisectionData.map((p, i) => (
+                <div key={i}>
+                    <p>equation : {p.equation} xl : {p.xl} xr : {p.xr} error : {p.error}</p>
+                </div>
+            ))}
+            <br/><br/>
             <h2>Result = {result}</h2>
             <br/><br/>
             {data && (

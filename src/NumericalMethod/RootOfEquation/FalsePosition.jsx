@@ -65,7 +65,7 @@ function FalsePosition(){
             <input placeholder="error" value={errorLimitIn} onChange={(e) => setErrorLiminIn(e.target.value)}></input>
             <br/>
             <br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <h2>result = {result}</h2>
             <br/>
             <br/>

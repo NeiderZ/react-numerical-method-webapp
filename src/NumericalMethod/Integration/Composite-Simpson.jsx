@@ -64,7 +64,7 @@ function CompositeSimpson(){
             <input placeholder="n" value={nIn} onChange={(e) => setNIn(e.target.value)}></input>
             <br/>
             <br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <h2>result = {result}</h2>
             <h2>Error = {error}%</h2>
             <br/>

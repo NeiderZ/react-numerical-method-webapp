@@ -52,7 +52,7 @@ function NewtonRaphson(){
             <br/><br/>
             <input placeholder="x at begin" value={xBegin} onChange={(e) => setXBegin(e.target.value)}></input>
             <br/><br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <h2>Result</h2>
             <br/><br/>
             {data && (

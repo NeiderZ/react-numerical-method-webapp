@@ -1,68 +1,32 @@
 const express = require('express')
-const bodyparser = require('body-parser')
-const app = express()
+const cors = require('cors')
+const mongoose = require('mongoose')
 
-app.use(bodyparser.json())
+const app = express()
+app.use(express.json())
+app.use(cors())
 
 const port = 8000
+const MONGO_URI = 'mongodb://localhost:27017/mydatabase'
 
-let users = []
-let counter = 1
+mongoose.connect(MONGO_URI)
+        .then(() => console.log("connected to database"))
+        .catch(err => console.error(err))
 
-app.get('/user', (req, res) => {
-    console.log("test")
-    res.json(users)
+const bisectionSchema = new mongoose.Schema({
+  equation: String,
+  xl: String,
+  xr: String,
+  error: String
 })
 
-app.post('/user', (req, res) => {
-    let user = req.body
-    user.id = counter
-    counter++
+const bisectionModel = mongoose.model('bisection', bisectionSchema)
 
-    users.push(user)
-
-    res.json({
-        message: "add ok",
-        user: user
-    })
+app.get('/bisection', async (req, res) => {
+  const bisectionData = await bisectionModel.find()
+  res.json(bisectionData)
 })
 
-app.patch('/user/:id', (req, res) => {
-    let id = req.params.id
-    let updateUser = req.body
-
-    let selectedIndex = users.findIndex(user => user.id == id)
-
-    if(updateUser.firstname){
-        users[selectedIndex].firstname = updateUser.firstname ||  users[selectedIndex].firstname
-    }
-
-    if(updateUser.lastname){
-        users[selectedIndex].lastname = updateUser.lastname || users[selectedIndex].lastname
-    }
-
-    res.send({
-        message: "update user complete!",
-        data: {
-            user: updateUser,
-            indexUpdate: selectedIndex
-        }
-    })
-})
-
-app.delete('/user/:id', (req, res) => {
-    let id = req.params.id
-
-    let selectedIndex = users.findIndex(user => user.id == id)
-
-    users.splice(selectedIndex, 1)
-
-    res.json({
-        message: "delete complete!",
-        indexDeleted: selectedIndex
-    })
-})
-
-app.listen(port, (req, res) => {
-    console.log('http server run at ' + port)
+app.listen(port, () => {
+  console.log(`running at http://localhost:${port}/bisection`)
 })

@@ -20,7 +20,7 @@ function Cramer() {
             <h2>Cramer's Rule</h2>
             <input placeholder="size" value={size} onChange={(e) => setSize(e.target.value)} type="number" min={1} style={{ width: "80px" }}/>
             <br /><br />
-            <button onClick={cal}>Do it</button>
+            <button onClick={cal} style={{ backgroundColor: '#007bff', color: 'white' }}>Do it</button>
         </div>
     );
 }

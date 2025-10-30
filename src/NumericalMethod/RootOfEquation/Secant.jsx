@@ -52,7 +52,7 @@ function Secant(){
             <input placeholder="x0" value={x0In} onChange={(e) => setX0In(e.target.value)}></input>&nbsp;&nbsp;&nbsp;&nbsp;
             <input placeholder="x1" value={x1In} onChange={(e) => setX1In(e.target.value)}></input>
             <br/><br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <h2>Result</h2>
             <br/><br/>
             {data && (

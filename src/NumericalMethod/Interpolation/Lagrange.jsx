@@ -29,11 +29,22 @@ function Lagrance() {
         setYTableIn(tempY)
     }
 
-    function calculate() {
+    async function calculate() {
         const xTable = xTableIn.map(Number)
         const yTable = yTableIn.map(Number)
         const xTarget = Number(xTargetIn)
         const n = xTable.length
+
+        try {
+            await fetch("http://localhost:5000/api/save-data", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ xTable, yTable })
+            });
+            console.log("Data saved to MongoDB ✅");
+        } catch (err) {
+            console.error("Error saving data:", err);
+        }
 
         if (isNaN(xTarget) || yTable.some(isNaN) || xTable.some(isNaN)) {
             alert("wrong input")

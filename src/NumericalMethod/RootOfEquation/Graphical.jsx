@@ -58,7 +58,7 @@ function Graphical(){
             <br/><br/>
             <input placeholder="Error" value={errorLimitIn} onChange={(e) => setErrorLimit(e.target.value)}/>
             <br/><br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <h2>Result = {result}</h2>
             <br/><br/>
             {data && (

@@ -49,7 +49,7 @@ function OnePointIteration(){
             <br/><br/>
             <input placeholder="x at begin" value={xStart} onChange={(e) => setXStart(e.target.value)}></input>
             <br/><br/>
-            <button onClick={calculate}>Calculate</button>
+            <button onClick={calculate} style={{ backgroundColor: '#007bff', color: 'white' }}>Calculate</button>
             <h2>Result</h2>
             <br/><br/>
             {data && (
